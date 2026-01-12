@@ -1,0 +1,8 @@
+# UNIX v4 source code (reference only, not part of book repo)
+unix_v4/
+
+# Build artifacts
+build/
+
+# Project planning docs
+meta/

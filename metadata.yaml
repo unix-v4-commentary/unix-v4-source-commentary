@@ -1,0 +1,30 @@
+title: "The UNIX Fourth Edition Source Code Commentary"
+subtitle: "A Complete Guide to Understanding the UNIX v4 Operating System"
+author: "Briam Rodriguez"
+date: "2026"
+subject: "Operating Systems"
+keywords: [UNIX, PDP-11, Operating Systems, Source Code]
+lang: en
+
+# Eisvogel specific
+titlepage: true
+titlepage-color: "2C3E50"
+titlepage-text-color: "FFFFFF"
+titlepage-rule-color: "FFFFFF"
+titlepage-rule-height: 2
+
+# Layout
+documentclass: book
+fontsize: 11pt
+geometry: "margin=1in"
+papersize: letter
+
+# Code blocks
+listings: true
+listings-no-page-break: false
+code-block-font-size: \scriptsize
+
+# Headers/footers
+header-left: "\\leftmark"
+header-right: ""
+footer-center: "\\thepage"
