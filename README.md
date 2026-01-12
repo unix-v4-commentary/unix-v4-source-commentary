@@ -22,18 +22,21 @@ Unlike modern operating systems with millions of lines of code, UNIX v4 is small
 ### Prerequisites
 
 **macOS (MacPorts):**
+
 ```bash
 sudo port install pandoc texlive-latex-recommended texlive-fonts-recommended \
                   texlive-latex-extra texlive-fonts-extra texlive-xetex
 ```
 
 **Debian/Ubuntu:**
+
 ```bash
 sudo apt install pandoc texlive-latex-recommended texlive-fonts-recommended \
                  texlive-latex-extra texlive-fonts-extra texlive-xetex
 ```
 
 **Eisvogel template:**
+
 ```bash
 mkdir -p ~/.pandoc/templates
 curl -L https://github.com/Wandmalfarbe/pandoc-latex-template/releases/latest/download/Eisvogel.tar.gz \
