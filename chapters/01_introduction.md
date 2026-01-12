@@ -40,7 +40,9 @@ Dennis Ritchie extended B into **C**, adding types, structures, and other featur
 
 ### Why This Version Matters
 
-UNIX v4 (November 1973) is special:
+UNIX v4 (November 1973)[^v4-release] is special:
+
+[^v4-release]: UNIX v4 was released November 1973. The source code studied in this book comes from a tape sent to Martin Newell at the University of Utah in June 1974. See Thalia Archibald's research at [unix-history](https://github.com/thaliaarchi/unix-history/blob/main/users/utah/v4.md).
 
 1. **First C version** — This is where UNIX became portable and where C proved itself as a systems programming language
 

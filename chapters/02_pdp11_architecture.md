@@ -15,7 +15,7 @@ You cannot understand UNIX v4 without understanding the PDP-11. The hardware sha
 
 ## Prerequisites
 
-- Basic understanding of computer architecture (registers, memory, addresses)
+- Basic understanding of computer architecture (registers, memory, addresses, interrupt handling)
 - Familiarity with any assembly language (concepts transfer)
 
 ## The PDP-11 Family
@@ -86,6 +86,8 @@ IPL   - Interrupt Priority Level (0-7)
 T     - Trace bit
 N,Z,V,C - Condition codes (negative, zero, overflow, carry)
 ```
+
+**Traps vs. Interrupts:** Both traps and interrupts transfer control to the kernel through similar mechanisms, but they differ in origin. An **interrupt** is an asynchronous event from external hardware (disk ready, clock tick, keyboard input). A **trap** is a synchronous event caused by the currently executing instruction—either intentionally (system calls use the `trap` instruction) or due to errors (illegal instruction, memory fault). The PDP-11 handles both through the same vector mechanism, saving the PC and PS on the stack before jumping to a handler address.
 
 The key fields for UNIX:
 

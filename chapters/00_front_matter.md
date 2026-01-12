@@ -2,7 +2,9 @@
 
 **A Complete Guide to Understanding the UNIX v4 Operating System**
 
-*Based on the original 1973 Bell Labs source code by Ken Thompson and Dennis Ritchie*
+*Based on the original Bell Labs source code by Ken Thompson and Dennis Ritchie*[^tape-date]
+
+[^tape-date]: UNIX Fourth Edition was released in November 1973. The source code in this book comes from a tape sent to the University of Utah in June 1974, containing the V4 distribution with minor updates. See Ken Thompson's letter to Martin Newell dated May 31, 1974.
 
 ---
 
@@ -14,7 +16,9 @@ Unlike modern operating systems with millions of lines of code, UNIX v4 is small
 
 ### Why UNIX v4?
 
-UNIX Fourth Edition (November 1973) occupies a unique position in computing history:
+UNIX Fourth Edition (November 1973)[^v4-date] occupies a unique position in computing history:
+
+[^v4-date]: The fourth edition was released in November 1973. The tape recovered from the University of Utah was sent in June 1974. See the [TUHS Wiki](https://wiki.tuhs.org/doku.php?id=systems:4th_edition) for edition timeline.
 
 - **First C-based UNIX** — While earlier versions were written in assembly, v4 was rewritten in C, making it the ancestor of all modern UNIX systems
 - **Complete and comprehensible** — The entire kernel fits in about 9,000 lines of C and assembly
@@ -146,11 +150,39 @@ We'll point out these differences as they arise.
 
 ### Acknowledgments
 
+**The Original Authors**
+
 - **Ken Thompson and Dennis Ritchie** — For creating UNIX and making computing what it is today
 - **Bell Labs** — For fostering an environment where this work could flourish
+
+**The UNIX v4 Tape Recovery**
+
+The source code studied in this book comes from a magnetic tape sent from Ken Thompson to Martin Newell at the University of Utah in June 1974. Newell was conducting pioneering computer graphics research (including the Utah Teapot). The tape survived because Jay Lepreau held onto it when it would have been discarded; it was rediscovered among his papers in July 2025.
+
+Timeline of recovery (from Angelo Papenhoff's 39C3 presentation):
+
+- **June 1974** — Tape sent from Ken Thompson to Martin Newell
+- **Jay Lepreau** — Saved the tape from being discarded (found among his papers)
+- **28 July 2025** — Found by Aleks Maricq (University of Utah)
+- **Rob Ricci** (University of Utah) — Spread the word about the discovery
+- **Thalia Archibald** (University of Utah) — Researched the tape's background and history
+- **18 Dec 2025** — Driven to the Computer History Museum by Jon Duerig
+- **19 Dec 2025** — Read and uploaded to archive.org by Al Kossow, Len Shustek, and Thalia Archibald
+- **20 Dec 2025** — Booted on emulator by Angelo Papenhoff (squoze.net)
+- **24 Dec 2025** — Booted on real PDP-11/45 by Jacob Ritorto
+- **26 Dec 2025** — Booted on real PDP-11/40 by Ashlin Inwood
+
+**Archives and Community**
+
 - **The Computer History Museum** — For preserving this important history
+- **The Internet Archive** — For hosting the recovered tape image ([utah_unix_v4_raw](https://archive.org/details/utah_unix_v4_raw))
 - **The UNIX Heritage Society** — For maintaining archives of early UNIX
-- **squoze.net** — For the UNIX v4 restoration that made this book possible
+- **squoze.net** — For the UNIX v4 restoration and emulation documentation ([squoze.net/UNIX/v4](http://squoze.net/UNIX/v4/))
+
+**This Book**
+
+- **Thalia Archibald** — For historical corrections and feedback
+- **Warren Toomey** — For technical corrections and feedback
 
 ---
 

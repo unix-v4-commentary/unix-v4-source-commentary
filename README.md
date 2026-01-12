@@ -1,6 +1,6 @@
 # The UNIX Fourth Edition Source Code Commentary
 
-A comprehensive, line-by-line commentary on the UNIX Fourth Edition (1973) source code.
+A comprehensive, line-by-line commentary on the UNIX Fourth Edition source code (released November 1973; tape recovered from June 1974 distribution).
 
 ## About
 
@@ -91,7 +91,15 @@ Under the following terms:
 
 - **Ken Thompson** and **Dennis Ritchie** - For creating UNIX
 - **Bell Labs** - For fostering this incredible work
-- **The Computer History Museum** - For preserving this history
+- **Martin Newell** - Original recipient of the tape (June 1974)
+- **Jay Lepreau** - Saved the tape from being discarded
+- **University of Utah** - Aleks Maricq (discovery), Rob Ricci, Thalia Archibald (research & upload), Jon Duerig (transport to CHM)
+- **Computer History Museum** - Al Kossow, Len Shustek (tape recovery)
+- **Angelo Papenhoff** (squoze.net) - Emulation, restoration, 39C3 presentation
+- **Jacob Ritorto** - First boot on real PDP-11/45
+- **Ashlin Inwood** - Boot on real PDP-11/40
+- **The Internet Archive** - Hosting the tape image
+- **Thalia Archibald**, **Warren Toomey** - Corrections and feedback on this book
 
 ---
 
