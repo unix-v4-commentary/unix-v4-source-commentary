@@ -1,4 +1,4 @@
-# The UNIX Fourth Edition Source Code Commentary
+# The UNIX Fourth Edition Source Code Commentary {-}
 
 **A Complete Guide to Understanding the UNIX v4 Operating System**
 
@@ -6,7 +6,7 @@
 
 ---
 
-## About This Book
+## About This Book {-}
 
 This book provides a comprehensive, line-by-line commentary on the UNIX Fourth Edition source code. UNIX v4 represents one of the most elegant and influential pieces of software ever written—an entire operating system in roughly 10,000 lines of code that you can actually understand.
 
@@ -159,7 +159,7 @@ We'll point out these differences as they arise.
 
 ---
 
-## How to Use This Book
+## How to Use This Book {-}
 
 ### For Sequential Reading
 
