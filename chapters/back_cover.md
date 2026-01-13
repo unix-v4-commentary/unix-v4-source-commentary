@@ -44,7 +44,7 @@ At just 10,000 lines, UNIX v4 is small enough for one person to understand compl
 
 The code is elegant. The design is timeless. The ideas are foundational.
 
-\vspace{1em}
+\vspace{0.5em}
 
 \begin{center}
 \textit{"UNIX is basically a simple operating system, but you have to be a genius to understand the simplicity."}\\
