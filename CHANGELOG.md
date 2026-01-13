@@ -17,6 +17,7 @@
   - Shutdown procedure and kernel rebuild instructions
 - Traps vs interrupts explanation in PDP-11 chapter — *Warren Toomey*
 - Interrupt handling added to prerequisites section
+- About the Author section
 
 ### Fixed
 - Correct tape date to June 1974 (v4 released Nov 1973, tape sent June 1974) — *Thalia Archibald*
