@@ -305,6 +305,10 @@ The user structure pointer `u.u_procp` is set to point back to proc[0].
     u.u_cdir->i_flag =& ~ILOCK;
 ```
 
+*(continued on next page)*
+
+\newpage
+
 Now the kernel initializes its subsystems:
 
 | Call | Purpose |
@@ -502,31 +506,39 @@ struct proc {
 };
 ```
 
+\newpage
+
 ## Boot Timeline
 
 ```
-t=0     Power on, bootstrap runs
-t=?     Kernel loaded, start: executes
+t=0 [Power On]
+        Bootstrap loads kernel from disk
+
+t=1 [Kernel Entry]
+        start: executes
         - MMU initialized
         - Segments set up
         - BSS cleared
         - main() called
 
-t=?     main() runs
+t=2 [Kernel Init]
+        main() runs
         - Memory discovered
-        - Clock found
+        - Clock started
         - Process 0 created
         - cinit(), binit(), iinit()
         - Root filesystem mounted
         - Process 1 forked
 
-t=?     Process 0: enters sched()
+t=3 [Fork]
+        Process 0: enters sched()
         Process 1: returns from main()
                    rti to user mode
                    executes icode
                    exec("/etc/init")
 
-t=?     /etc/init runs
+t=4 [User Space]
+        /etc/init runs
         - Opens console
         - Spawns getty on terminals
         - System ready for login

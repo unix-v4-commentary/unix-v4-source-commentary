@@ -1,7 +1,7 @@
 title: "The UNIX Fourth Edition Source Code Commentary"
 subtitle: "A Complete Guide to Understanding the UNIX v4 Operating System"
 author: "Briam Rodriguez"
-date: "20260112.008 Edition"
+date: "20260112.027 Edition"
 subject: "Operating Systems"
 keywords: [UNIX, PDP-11, Operating Systems, Source Code]
 lang: en
@@ -28,8 +28,13 @@ code-block-font-size: \scriptsize
 monofont: "Menlo"
 
 # Force fixed-width columns in code blocks
+# Widen TOC number column to prevent collisions with titles
 header-includes: |
   \lstset{columns=fixed, keepspaces=true}
+  \usepackage{tocloft}
+  \setlength{\cftchapnumwidth}{3em}
+  \setlength{\cftsecnumwidth}{3.5em}
+  \RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\scriptsize}
 
 # Headers/footers
 header-left: "\\leftmark"

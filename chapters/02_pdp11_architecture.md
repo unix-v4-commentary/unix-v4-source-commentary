@@ -89,7 +89,7 @@ N,Z,V,C - Condition codes (negative, zero, overflow, carry)
 
 **Traps vs. Interrupts:** Both traps and interrupts transfer control to the kernel through similar mechanisms, but they differ in origin. An **interrupt** is an asynchronous event from external hardware (disk ready, clock tick, keyboard input). A **trap** is a synchronous event caused by the currently executing instruction—either intentionally (system calls use the `trap` instruction) or due to errors (illegal instruction, memory fault). The PDP-11 handles both through the same vector mechanism, saving the PC and PS on the stack before jumping to a handler address.
 
-The key fields for UNIX:
+The key fields for UNIX are the following:
 
 ### Current/Previous Mode (bits 14-15, 12-13)
 
@@ -186,12 +186,13 @@ Each segment has two registers:
 ```
  15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
-|          PLF          |      |ED|  ACF   |     |
+|  |        PLF         |W |        |ED| ACF |  |
 +--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 
-PLF  Page Length Field (in 64-byte blocks)
-ED   Expand Downward (1 for stack segments)
-ACF  Access Control Field (RO=2, RW=6)
+PLF  Page Length Field (bits 14-8, in 64-byte blocks)
+W    Written (bit 7, set by hardware when page modified)
+ED   Expand Downward (bit 3, 1 for stack segments)
+ACF  Access Control Field (bits 2-1: 01=RO, 11=RW)
 ```
 
 ### Address Translation

@@ -33,7 +33,7 @@ UNIX v4 includes a complete, self-hosting toolchain:
 The C compiler is a **two-pass** system:
 
 ```
-source.c → [c0] → intermediate → [c1] → source.s
+source.c -> [c0] -> intermediate -> [c1] -> source.s
 ```
 
 - **c0** (`lib/c0`) — Lexer and parser; produces intermediate code
@@ -431,24 +431,24 @@ To modify and rebuild the kernel:
 
 ```
 Source Files:
-ken/*.c, dmr/*.c ──→ [cc] ──→ lib1, lib2 (pre-compiled)
+ken/*.c, dmr/*.c --> [cc] --> lib1, lib2 (pre-compiled)
 
 Configuration:
-mkconf ──→ l.s (vectors)
-       ──→ c.c (device switches)
+mkconf --> l.s (vectors)
+       --> c.c (device switches)
 
 Assembly:
-mch.s ──→ [as] ──→ mch.o
-l.s   ──→ [as] ──→ low.o
+mch.s --> [as] --> mch.o
+l.s   --> [as] --> low.o
 
 Compilation:
-c.c ──→ [cc] ──→ conf.o
+c.c --> [cc] --> conf.o
 
 Linking:
-low.o + mch.o + conf.o + lib1 + lib2 ──→ [ld] ──→ unix
+low.o + mch.o + conf.o + lib1 + lib2 --> [ld] --> unix
 
 Boot:
-bootstrap ──→ load unix ──→ start: ──→ main() ──→ init
+bootstrap --> load unix --> start: --> main() --> init
 ```
 
 ## Summary

@@ -454,13 +454,11 @@ The reverse of `alloc()`: when the cache fills, the current 100 free blocks are 
 ### The Free Block List
 
 ```
-Superblock                Link Block 1              Link Block 2
-+------------------+     +------------------+      +------------------+
-| s_nfree = 47     |     | count = 100      |      | count = 100      |
-| s_free[0..46]    |     | blocks[0..99] ───┼─────►| blocks[0..99] ───┼───► ...
-+------------------+     +------------------+      +------------------+
-        │
-        └── s_free[46] points to Link Block 1
+   Superblock          Link Block 1         Link Block 2
++----------------+   +----------------+   +----------------+
+| s_nfree = 47   |   | count = 100    |   | count = 100    |
+| s_free[0..46] -+-->| blocks[0..99] -+-->| blocks[0..99] -+--> ...
++----------------+   +----------------+   +----------------+
 ```
 
 This design means:

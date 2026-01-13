@@ -18,19 +18,21 @@ When a user program calls `read()` or `write()`, the request passes through thre
 - Chapter 9: Inodes and Superblock (inode structure, `i_addr[]`)
 - Chapter 12: Buffer Cache (`bread`, `bwrite`, `brelse`)
 
+\newpage
+
 ## The Three-Level File Abstraction
 
 ```
-User Process                 Kernel
-+------------------+        +------------------------+
-| fd 0 ──────────────────►  | file[17]               |
-| fd 1 ──────────────────►  |   f_inode ─────────────┼───► inode[5]
-| fd 2 ──────────────────►  |   f_offset             |        │
-| ...              |        +------------------------+        ▼
-| u.u_ofile[15]    |        | file[23]               |    disk blocks
-+------------------+        |   f_inode ─────────────┼───► inode[12]
-                            |   f_offset             |
-                            +------------------------+
+  u.u_ofile[]           file[]              inode[]
++-------------+     +-------------+     +-------------+
+| fd 0  ------+---->| f_count     |  +->| i_mode      |
+| fd 1  ------+-+   | f_inode ----+--+  | i_addr[8]---+--> disk
+| fd 2  ------+-+-->| f_offset    |     +-------------+    blocks
+| ...         | |   +-------------+     | i_mode      |
++-------------+ |   | f_count     |  +->| i_addr[8]---+--> disk
+                +-->| f_inode ----+--+  +-------------+    blocks
+                    | f_offset    |
+                    +-------------+
 ```
 
 **File descriptors** (`u.u_ofile[]`): Per-process array of pointers to open file entries. Small integers (0, 1, 2...) that user programs use.
@@ -667,6 +669,8 @@ These handle the byte-by-byte case:
 - `u.u_segflg=1`: Kernel space, direct memory access
 - Update count, offset, and base pointer after each byte
 
+\newpage
+
 ## The Complete Read Path
 
 ```
@@ -704,6 +708,8 @@ read(fd, buf, count)
     Update fp->f_offset
     Return bytes read in r0
 ```
+
+\newpage
 
 ## The Complete Write Path
 

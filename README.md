@@ -2,6 +2,8 @@
 
 A comprehensive, line-by-line commentary on the UNIX Fourth Edition source code (released November 1973; tape recovered from June 1974 distribution).
 
+**TL;DR:** Just want to read? Download [`unix_v4_commentary.pdf`](unix_v4_commentary.pdf) directly. The rest of this README is for building from source.
+
 ## About
 
 UNIX v4 represents one of the most elegant and influential pieces of software ever written - an entire operating system in roughly 10,000 lines of code that you can actually understand. This book provides a complete guide to the kernel, device drivers, file system, shell, and user-space utilities.
