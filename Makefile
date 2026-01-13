@@ -5,11 +5,13 @@ pdf:
 
 print: pdf
 	@echo "Creating print-ready PDF..."
-	@gs -q -dNOPAUSE -dBATCH -dSAFER \
-		-dPDFSETTINGS=/prepress \
-		-dCompatibilityLevel=1.4 \
-		-dFirstPage=2 \
+	@DISPLAY= gs -dBATCH -dNOPAUSE -dSAFER \
 		-sDEVICE=pdfwrite \
+		-dCompatibilityLevel=1.4 \
+		-dPDFSETTINGS=/prepress \
+		-dEmbedAllFonts=true \
+		-dCompressFonts=true \
+		-dSubsetFonts=true \
 		-sOutputFile=unix_v4_commentary_print.pdf \
 		build/unix_v4_commentary.pdf
 	@echo "Print-ready PDF: unix_v4_commentary_print.pdf"

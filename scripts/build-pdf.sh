@@ -77,6 +77,9 @@ add_chapter chapters/appendix_e_running_v4.md >> build/combined.md
 # About the Author
 add_chapter chapters/about_the_author.md >> build/combined.md
 
+# Back Cover
+add_chapter chapters/back_cover.md >> build/combined.md
+
 echo "Generating PDF with Pandoc..."
 
 pandoc build/combined.md \

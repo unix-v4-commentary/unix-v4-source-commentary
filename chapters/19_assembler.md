@@ -16,6 +16,8 @@ The UNIX assembler translates PDP-11 assembly language into executable object co
 - Chapter 2: PDP-11 Architecture (instruction set)
 - Chapter 18: C Compiler (produces assembly input)
 
+\newpage
+
 ## Two-Pass Architecture
 
 ```
@@ -114,19 +116,46 @@ The assembler tracks the current address with `.` (dot):
 foo:    .word 42    / . = 0 in data, foo = 0
 ```
 
+\newpage
+
 ## Instruction Encoding
 
 PDP-11 instructions are encoded in 16-bit words:
 
+**Single Operand** (CLR, INC, TST, etc.):
+
 ```
-Single operand:     | op  |  mode  | reg |
-                    15   9 8      5 4   0
+ 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|        opcode         |  mode  |     reg     |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+```
 
-Double operand:     | op  | src mode/reg | dst mode/reg |
-                    15  11 10          5 4             0
+**Double Operand** (MOV, ADD, CMP, etc.):
 
-Branch:             | op  |     offset    |
-                    15   8 7              0
+```
+ 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|  opcode   | src mode  |src reg| dst mode  |dst|
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+```
+
+**Branch** (BEQ, BNE, BR, etc.):
+
+```
+ 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|        opcode         |        offset         |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+```
+
+**Jump/Subroutine** (JSR, JMP):
+
+```
+ 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1  0
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
+|     opcode      | reg |  mode  |   dst reg   |
++--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+
 ```
 
 ### Addressing Modes
@@ -150,6 +179,8 @@ Mode 3: @#n     Absolute
 Mode 6: n       Relative
 Mode 7: @n      Relative indirect
 ```
+
+\newpage
 
 ## Pass 2 Structure
 
@@ -332,7 +363,3 @@ The UNIX assembler:
 - Chapter 2: PDP-11 Architecture — Target instruction set
 - Chapter 18: C Compiler — Producer of assembly input
 - PDP-11 Processor Handbook — Instruction encoding details
-
----
-
-**Part V Complete! The UNIX v4 kernel and user space have been fully documented.**

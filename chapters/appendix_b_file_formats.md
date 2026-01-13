@@ -70,6 +70,8 @@ Offset  Size    Field           Description
 +------------------+
 ```
 
+\newpage
+
 ### Memory Layout at Execution
 
 When `exec()` loads a 0407 file:
@@ -124,7 +126,10 @@ struct sym {
 };
 ```
 
+\newpage
+
 Symbol types:
+
 | Value | Meaning |
 |-------|---------|
 | 0 | Undefined |
@@ -150,6 +155,8 @@ Breaking down the header:
 - 000000 = BSS size (0 bytes)
 
 ---
+
+\newpage
 
 ## Archive Format (.a files)
 
@@ -303,6 +310,8 @@ offset = ((inode_number + 31) % 16) * 32;
 
 Note: Inode numbers start at 1 (inode 0 is unused). The +31 accounts for this offset.
 
+\newpage
+
 ### On-Disk Inode Structure
 
 Each inode is 32 bytes on disk:
@@ -316,7 +325,7 @@ Offset  Size    Field       Description
 4       1       di_gid      Owner group ID
 5       1       di_size0    File size high byte
 6       2       di_size1    File size low word
-8       16      di_addr[8]  Block addresses (13-bit each)
+8       16      di_addr[8]  Block addresses (8 x 16-bit)
 24      4       di_atime    Access time
 28      4       di_mtime    Modification time
 ```
@@ -328,10 +337,19 @@ Offset  Size    Field       Description
 The `di_mode` field encodes file type and permissions:
 
 ```
-Bit 15    14    13    12   11   10    9    8    7    6    5    4    3    2    1    0
+ 15   14   13   12   11   10    9    8    7    6    5    4    3    2    1    0
 +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
-|alloc|  type  |large|suid|sgid|    owner    |    group    |    other    |
+| A  |  type   | L  | U  | G  |    | r  | w  | x  | r  | w  | x  | r  | w  | x  |
 +----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+----+
+  |    \__(2)__/  |    |    |       \___(3)____/   \___(3)____/   \___(3)____/
+  |        |      |    |    |            |              |              |
+  |        |      |    |    |          owner          group          other
+  |        |      |    |    |
+  |        |      |    |    +---- ISGID  (02000)   set-group-ID
+  |        |      |    +--------- ISUID  (04000)   set-user-ID
+  |        |      +-------------- ILARG  (010000)  large file
+  |        +--------------------- IFMT   (060000)  file type
+  +----------------------------- IALLOC (0100000) allocated
 ```
 
 | Bits | Value | Meaning |
@@ -345,19 +363,25 @@ Bit 15    14    13    12   11   10    9    8    7    6    5    4    3    2    1 
 | 12 | ILARG (010000) | Large file (indirect blocks) |
 | 11 | ISUID (04000) | Set user ID on execution |
 | 10 | ISGID (02000) | Set group ID on execution |
+| 9 | (01000) | Unused[^sticky] |
 | 8-6 | | Owner permissions (rwx) |
 | 5-3 | | Group permissions (rwx) |
 | 2-0 | | Other permissions (rwx) |
 
+[^sticky]: Bit 9 became ISVTX (sticky bit) in UNIX Seventh Edition (1979). On executables, it kept the program text in swap space after exit. On directories, it restricted file deletion to owners.
+
 ### Block Addressing
 
-The `di_addr[]` array holds 8 block addresses, but they are stored in a packed 13-bit format (3 bytes per address pair):
+The `di_addr[]` array holds 8 block addresses as 16-bit integers[^blockaddr] (16 bytes total):
 
 ```
-di_addr storage (16 bytes for 8 addresses):
-+-------+-------+-------+
-| addr0 low | a0h|a1l | addr1 high |  ...
-+-------+-------+-------+
+di_addr storage (16 bytes = 8 addresses x 2 bytes each):
+
+ byte:   0    1    2    3    4    5        14   15
+       +----+----+----+----+----+----+    +----+----+
+       | addr[0] | addr[1] | addr[2] |....| addr[7] |
+       +----+----+----+----+----+----+    +----+----+
+         blk 0     blk 1     blk 2          blk 7
 ```
 
 **Small files (ILARG not set):**
@@ -382,6 +406,8 @@ di_addr[1] --> indirect block --> 256 data blocks
 ...
 di_addr[7] --> double indirect --> 256 indirect blocks --> 65536 data blocks
 ```
+
+[^blockaddr]: UNIX v4 stores block addresses as simple 16-bit integers with no packing. Starting in v6, addresses were stored in a packed 3-byte (24-bit) format using the `l3tol()` and `ltol3()` conversion functions to support larger filesystems. Some documentation incorrectly attributes this 3-byte packing to v4.
 
 ### Directory Format
 

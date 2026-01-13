@@ -398,6 +398,8 @@ int owner;
 
 ---
 
+\newpage
+
 ### 17 - break (sbrk)
 
 ```c
@@ -614,14 +616,16 @@ Reserved
 ### 30 - smdate
 
 ```c
-smdate(name, timep)
+smdate(name)
 char *name;
-int *timep;
 ```
 
-**Description:** Set modification date (stub implementation in v4)
+**Arguments:**
+- `name` - Pathname (1 word in sysent)
 
-**Implementation:** `nullsys()`
+**Description:** Set modification date. This syscall is defined in the system call table but implemented as `nullsys()`, meaning it does nothing and returns immediately. Likely a placeholder for planned functionality that was never completed in v4.
+
+**Implementation:** `nullsys()` (no-op)
 
 ---
 
@@ -911,6 +915,7 @@ int (*func)();
 **Description:** Set signal handler. Cannot change handler for signal 9 (KILL).
 
 **Signals in UNIX v4:**
+
 | Number | Name | Default Action |
 |--------|------|----------------|
 | 1 | SIGHUP | Terminate |
@@ -936,6 +941,8 @@ int (*func)();
 Reserved for future use
 
 ---
+
+\newpage
 
 ## System Call Summary Table
 
@@ -967,6 +974,7 @@ Reserved for future use
 | 24 | getuid | 0 | Get user ID |
 | 25 | stime | 0 | Set system time |
 | 28 | fstat | 1 | Get open file status |
+| 30 | smdate | 1 | Set modification date (stub) |
 | 31 | stty | 1 | Set terminal params |
 | 32 | gtty | 1 | Get terminal params |
 | 34 | nice | 0 | Set priority |

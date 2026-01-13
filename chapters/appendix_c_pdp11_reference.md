@@ -26,6 +26,8 @@ The PDP-11 has eight 16-bit general-purpose registers:
 - r6/sp: Stack pointer
 - r7/pc: Program counter
 
+\newpage
+
 ### Processor Status Word (PSW)
 
 Located at address 0177776:
@@ -90,6 +92,8 @@ mov  *$addr,r0    ; Absolute: Memory[addr] to r0
 ```
 
 ---
+
+\newpage
 
 ## Instruction Set
 
@@ -184,6 +188,8 @@ All branches are PC-relative with an 8-bit signed offset (range: -128 to +127 wo
 | rts reg | pc=reg; reg=(sp)+ | Return from subroutine |
 | mark n | | Mark stack (for complex returns) |
 | sob reg,addr | if (--reg) br addr | Subtract one and branch |
+
+\newpage
 
 **Common calling patterns:**
 
@@ -335,6 +341,8 @@ Each vector location contains two words:
 | .even | Align to word boundary |
 | .comm name,size | Define common block |
 
+\newpage
+
 ### Expressions
 
 ```assembly
@@ -377,6 +385,8 @@ func:
 
 ---
 
+\newpage
+
 ## PDP-11 Models Used with UNIX v4
 
 | Model | Memory | Notes |
@@ -415,6 +425,8 @@ r5    Frame pointer (preserved)
 sp    Stack pointer
 pc    Program counter
 ```
+
+\newpage
 
 ### Stack Frame Layout
 

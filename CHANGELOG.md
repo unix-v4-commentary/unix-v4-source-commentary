@@ -3,6 +3,9 @@
 ## 2026-01-13
 
 ### Added
+- Bit 9 (unused) to inode mode field table with footnote on sticky bit history (ISVTX in v7)
+- Footnote explaining v4 vs v6 block address format (16-bit integers vs 3-byte packing)
+- smdate (syscall 30) to System Call Summary Table (was missing)
 - `make print` target: creates print-service-compatible PDF (PDF 1.4, cover removed)
 - Dedication haiku in front matter with zen image
 - Footnote linking to squoze.net for UNIX v4 source code availability
@@ -20,6 +23,12 @@
 - Footnote on PDP-11 local labels (f/b notation for branches) (Chapter 17)
 
 ### Fixed
+- Inode mode field ASCII diagram: replaced broken art with proper bit-field diagram and tree annotations
+- Block addressing: corrected "13-bit packed format" to "16-bit integers" (3-byte packing was v6, not v4)
+- smdate (syscall 30): corrected from 2 args to 1 arg per actual sysent.c
+- Instruction encoding diagrams (Chapter 19): replaced text diagrams with proper ASCII box art
+- Symbol types table (Appendix B): added blank line for proper markdown rendering
+- Signals table (Appendix A): added blank line for proper markdown rendering
 - RK05 disk capacity: 2.4 MB → 2.38 MiB (correct math: 203×2×12×512 bytes)
 - Flow control diagram in Chapter 13: converted Unicode to pure ASCII
 - Special character rendering: `#`, `@`, `Ctrl-D` now use code formatting
@@ -29,7 +38,8 @@
 
 ### Changed
 - Added graphicx package for image support
-- Page breaks added for improved layout: sections 6.4, 6.7, 7.10, 11.7.2, 12.18, 13.4, 14.8, 14.15.2, 14.17, 15.4, 15.6, 15.12.3, 15.15, 16.6, 16.12, 17.4, 17.7.3, 17.9, 18.5, 18.8
+- Added enumitem package for list formatting
+- Page breaks added for improved layout: sections 6.4, 6.7, 7.10, 11.7.2, 12.18, 13.4, 14.8, 14.15.2, 14.17, 15.4, 15.6, 15.12.3, 15.15, 16.6, 16.12, 17.4, 17.7.3, 17.9, 18.5, 18.8, 19.2, 19.4, 19.6, 20.2.18, 20.3, 21.1.4, 21.1.6, 21.2, 21.3.6, 22.1.1, 22.3, 22.5.5, 22.6.2, 22.7, 22.8.3
 
 ## 2026-01-12
 
