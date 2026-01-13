@@ -3,6 +3,7 @@
 ## 2026-01-13
 
 ### Added
+- `make print` target: creates print-service-compatible PDF (PDF 1.4, cover removed)
 - Dedication haiku in front matter with zen image
 - Footnote linking to squoze.net for UNIX v4 source code availability
 - Missing trap vectors br7+7 through br7+9 (vectors 240, 244, 250) in Chapter 7

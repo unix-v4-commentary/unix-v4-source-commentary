@@ -3,6 +3,7 @@ unix_v4/
 
 # Build artifacts
 build/
+unix_v4_commentary_print.pdf
 
 # Project planning docs
 meta/
