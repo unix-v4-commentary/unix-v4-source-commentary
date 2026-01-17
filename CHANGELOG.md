@@ -4,6 +4,7 @@
 
 ### Fixed
 - icode array comments: corrected PDP-11 byte order in string encoding (Chapter 4) — *Lysander Trischler*
+- Duplicate page numbers in footer: removed redundant center page number — *Gennadiy Chuyeshov*
 
 ## 2026-01-13
 
